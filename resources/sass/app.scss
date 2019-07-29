@@ -1,8 +1,23 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//// Fonts
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.navbar {
+    background-color: #1d5ca2;
+    padding: 0.35rem 1rem;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.app-content {
+    flex: 1;
+}
