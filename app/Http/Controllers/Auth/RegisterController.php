@@ -17,6 +17,11 @@ class RegisterController extends Controller
         $this->service = $service;
     }
 
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
     public function register(RegisterRequest $request)
     {
         $this->service->register($request);

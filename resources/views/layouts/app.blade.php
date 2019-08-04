@@ -55,7 +55,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{route('cabinet')}}" class="dropdown-item">Cabinet</a>
+                                    <a class="dropdown-item" href="{{ route('admin.home') }}">Admin</a>
+                                    <a href="{{route('cabinet.home')}}" class="dropdown-item">Cabinet</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

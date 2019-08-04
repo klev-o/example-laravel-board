@@ -3,10 +3,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Entity\User\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class LoginController extends Controller
 {
@@ -43,17 +47,6 @@ class LoginController extends Controller
             if ($user->isWait()) {
                 Auth::logout();
                 return back()->with('error', 'You need to confirm your account. Please check your email.');
-            }
-            if ($user->isPhoneAuthEnabled()) {
-                Auth::logout();
-                $token = (string)random_int(10000, 99999);
-                $request->session()->put('auth', [
-                    'id' => $user->id,
-                    'token' => $token,
-                    'remember' => $request->filled('remember'),
-                ]);
-                $this->sms->send($user->phone, 'Login code: ' . $token);
-                return redirect()->route('login.phone');
             }
             return redirect()->intended(route('cabinet.home'));
         }

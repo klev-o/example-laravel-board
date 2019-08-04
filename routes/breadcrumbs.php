@@ -25,3 +25,17 @@ Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
     $crumbs->parent('password.request');
     $crumbs->push('Change', route('password.reset'));
 });
+
+// Admin
+
+Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Admin', route('admin.home'));
+});
+
+// Cabinet
+
+Breadcrumbs::register('cabinet.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Cabinet', route('cabinet.home'));
+});
