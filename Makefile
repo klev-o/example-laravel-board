@@ -24,3 +24,6 @@ assets-dev:
 
 assets-watch:
 	docker exec app_node_1 npm run watch
+
+migrate:
+	docker-compose exec php-cli php artisan migrate
