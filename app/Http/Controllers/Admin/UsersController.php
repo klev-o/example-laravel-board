@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Entity\User\User;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\UseCases\Auth\RegisterService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
+
+    private $register;
+
+    public function __construct(RegisterService $register)
+    {
+        $this->register = $register;
+    }
+
     /**
      * Display a listing of the resource.
      * @param Request $request
@@ -19,7 +28,7 @@ class UsersController extends Controller
     {
         $query = User::orderByDesc('id');
 
-        $users = $query->paginate(20);
+        $users = $query->paginate(10);
 
         $statuses = [
             User::STATUS_WAIT => 'Waiting',
@@ -96,5 +105,12 @@ class UsersController extends Controller
     {
         $user->delete();
         return redirect()->route('admin.users.index');
+    }
+
+    public function verify(User $user)
+    {
+        //todo try catch
+        $this->register->verify($user->id);
+        return redirect()->route('admin.users.show', $user);
     }
 }
