@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
  * @property string $email
  * @property string $phone
  * @property bool $phone_verified
+ * @property string $role
  * @property string $password
  * @property string $verify_token
  * @property string $phone_verify_token
@@ -33,7 +34,7 @@ class User extends Authenticatable
     public const ROLE_ADMIN = 'admin';
 
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'verify_token', 'status',
+        'name', 'email', 'phone', 'password', 'verify_token', 'status', 'role',
     ];
 
     protected $hidden = [
@@ -46,6 +47,15 @@ class User extends Authenticatable
         'phone_auth' => 'boolean',
     ];
 
+    public static function rolesList(): array
+    {
+        return [
+            self::ROLE_USER => 'User',
+            self::ROLE_MODERATOR => 'Moderator',
+            self::ROLE_ADMIN => 'Admin',
+        ];
+    }
+
 
     public static function register(string $name, string $email, string $password): self
     {
@@ -55,6 +65,7 @@ class User extends Authenticatable
             'password' => bcrypt($password),
             'verify_token' => Str::uuid(),
             'status' => self::STATUS_WAIT,
+            'role' => self::ROLE_USER,
         ]);
     }
 
@@ -65,6 +76,7 @@ class User extends Authenticatable
             'email' => $email,
             'password' => bcrypt(Str::random()),
             'status' => self::STATUS_ACTIVE,
+            'role' => self::ROLE_USER,
         ]);
     }
 
@@ -87,6 +99,18 @@ class User extends Authenticatable
     {
         return $this->role === self::ROLE_ADMIN;
     }
+
+    public function changeRole($role): void
+    {
+        if (!array_key_exists($role, self::rolesList())) {
+            throw new \InvalidArgumentException('Undefined role "' . $role . '"');
+        }
+        if ($this->role === $role) {
+            throw new \DomainException('Role is already assigned.');
+        }
+        $this->update(['role' => $role]);
+    }
+
 
     public function verify(): void
     {
