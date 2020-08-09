@@ -1,6 +1,5 @@
 .idea
 /node_modules
-/public/hot
 /public/storage
 /public/build
 /storage/*.key
