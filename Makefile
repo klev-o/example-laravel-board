@@ -28,7 +28,7 @@ assets-rebuild:
 	docker-compose exec node npm rebuild node-sass --force
 
 assets-dev:
-	docker-compose exec node yarn run dev
+	docker-compose run --rm node yarn run dev
 
 assets-watch:
 	docker-compose exec node yarn run watch
