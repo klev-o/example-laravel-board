@@ -18,7 +18,8 @@ Route::get('/', 'HomeController@index')->name('home');
 //Route::get('/', function () {
 //    return view('home');
 //})->name('home');
-//Auth::routes();
+
+Auth::routes();
 
 Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
