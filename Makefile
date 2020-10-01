@@ -1,7 +1,7 @@
 up: docker-up
 restart: docker-down docker-up
 
-init: docker-clear docker-build docker-up
+init: docker-clear docker-build docker-up app-init
 
 docker-clear:
 	docker-compose down --remove-orphans
@@ -17,6 +17,20 @@ docker-down:
 
 docker-build:
 	docker-compose build
+
+app-init: app-composer-install app-migrations app-fixtures
+
+app-composer-install:
+	docker-compose run --rm php-cli composer install
+
+app-wait-db :
+	until docker-compose exec -T manager-postgres pg_isready --timeout=0 --dbname=app ; do sleep 1 ; done
+
+app-migrations:
+	docker-compose run --rm php-cli php artisan migrate
+
+app-fixtures:
+	docker-compose run --rm php-cli php artisan db:seed
 
 test:
 	docker-compose exec php-cli vendor/bin/phpunit
