@@ -92,7 +92,8 @@ class UsersController extends Controller
             User::ROLE_ADMIN => 'Admin',
         ];
 
-        return view('admin.users.edit', compact('user', 'statuses', 'roles'));
+        //return view('admin.users.edit', compact('user', 'statuses', 'roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     public function update(UpdateRequest $request, User $user)
