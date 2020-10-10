@@ -7,4 +7,4 @@ RUN wget https://getcomposer.org/installer -O - -q | php -- --version=1.9.1 --in
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-WORKDIR /var/www
+WORKDIR /app

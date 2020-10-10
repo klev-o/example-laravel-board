@@ -1,7 +1,7 @@
 up: docker-up
 restart: docker-down docker-up
 
-init: docker-clear docker-build docker-up app-init
+init: docker-down-clear docker-pull docker-build docker-up app-init
 
 docker-clear:
 	docker-compose down --remove-orphans
@@ -17,6 +17,9 @@ docker-down:
 
 docker-build:
 	docker-compose build
+
+docker-pull:
+	docker-compose pull
 
 app-init: app-composer-install app-migrations app-fixtures
 
