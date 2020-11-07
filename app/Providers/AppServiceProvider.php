@@ -16,13 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(SmsSender::class, function (Application $app) {
-            $config = $app->make('config')->get('sms');
-            if (!empty($config['url'])) {
-                return new SmsRu($config['app_id'], $config['url']);
-            }
-            return new SmsRu($config['app_id']);
-        });
+//        $this->app->singleton(SmsSender::class, function (Application $app) {
+//            $config = $app->make('config')->get('sms');
+//            if (!empty($config['url'])) {
+//                return new SmsRu($config['app_id'], $config['url']);
+//            }
+//            return new SmsRu($config['app_id']);
+//        });
     }
 
     /**
