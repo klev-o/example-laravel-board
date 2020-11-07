@@ -59,6 +59,13 @@ Breadcrumbs::register('cabinet.profile.phone', function (Crumbs $crumbs) {
 
 // Users
 
+// Cabinet Adverts
+
+Breadcrumbs::register('cabinet.adverts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.home');
+    $crumbs->push('Adverts', route('cabinet.adverts.index'));
+});
+
 
 // Admin
 Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
