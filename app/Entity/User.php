@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -32,6 +31,7 @@ class User extends Authenticatable
 
     public const ROLE_USER = 'user';
     public const ROLE_ADMIN = 'admin';
+    public const ROLE_MODERATOR = 'moderator';
 
     /**
      * The attributes that are mass assignable.
@@ -67,6 +67,7 @@ class User extends Authenticatable
     {
         return [
             self::ROLE_USER => 'User',
+            self::ROLE_MODERATOR => 'Moderator',
             self::ROLE_ADMIN => 'Admin',
         ];
     }
@@ -179,6 +180,11 @@ class User extends Authenticatable
             throw new \DomainException('Role is already assigned.');
         }
         $this->update(['role' => $role]);
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->role === self::ROLE_MODERATOR;
     }
 
     public function isAdmin(): bool
