@@ -21,13 +21,13 @@ docker-build:
 docker-pull:
 	docker-compose pull
 
-app-init: app-composer-install app-migrations app-fixtures
+app-init: app-composer-install app-wait-db app-migrations app-fixtures
 
 app-composer-install:
 	docker-compose run --rm php-cli composer install
 
 app-wait-db :
-	until docker-compose exec -T manager-postgres pg_isready --timeout=0 --dbname=app ; do sleep 1 ; done
+	while docker-compose exec -T mysql ping -h"localhost" --silent ; do sleep 1 ; done
 
 app-migrations:
 	docker-compose run --rm php-cli php artisan migrate
