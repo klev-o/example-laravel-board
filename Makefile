@@ -27,7 +27,7 @@ app-composer-install:
 	docker-compose run --rm php-cli composer install
 
 app-wait-db :
-	until docker-compose exec -T mysql ping -h"localhost" --silent ; do sleep 1 ; done
+	while docker-compose exec -T mysql ping -h"localhost" --silent ; do sleep 1 ; done
 
 app-migrations:
 	docker-compose run --rm php-cli php artisan migrate
