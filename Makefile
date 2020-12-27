@@ -39,7 +39,7 @@ test:
 	docker-compose exec php-cli vendor/bin/phpunit
 
 assets-install:
-	docker-compose exec node yarn install
+	docker-compose exec node npm install
 
 assets-rebuild:
 	docker-compose exec node npm rebuild node-sass --force
