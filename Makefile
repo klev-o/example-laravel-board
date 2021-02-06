@@ -9,13 +9,13 @@ docker-clear:
 docker-down-clear:
 	docker-compose down -v --remove-orphans
 
-docker-up:
+docker-up: memory
 	docker-compose up -d
 
 docker-down:
 	docker-compose down --remove-orphans
 
-docker-build:
+docker-build: memory
 	docker-compose build
 
 docker-pull:
@@ -49,6 +49,9 @@ assets-dev:
 
 assets-watch:
 	docker-compose exec node yarn run watch
+
+memory:
+	sudo sysctl -w vm.max_map_count=262144
 
 perm:
 	sudo chgrp -R www-data storage bootstrap/cache
