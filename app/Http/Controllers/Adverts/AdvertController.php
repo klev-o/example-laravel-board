@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Gate;
 
 class AdvertController extends Controller
 {
+    private $search;
+
     public function __construct(SearchService $search)
     {
         $this->search = $search;
@@ -27,16 +29,32 @@ class AdvertController extends Controller
         $region = $path->region;
         $category = $path->category;
 
-        $regions = $region
-            ? $region->children()->orderBy('name')->getModels()
-            : Region::roots()->orderBy('name')->getModels();
-        $categories = $category
-            ? $category->children()->defaultOrder()->getModels()
-            : Category::whereIsRoot()->defaultOrder()->getModels();
+        $result = $this->search->search($category, $region, $request, 20, $request->get('page', 1));
 
-        $adverts = $this->search->search($category, $region, $request, 20, $request->get('page', 1));
+        $adverts = $result->adverts;
+        $regionsCounts = $result->regionsCounts;
+        $categoriesCounts = $result->categoriesCounts;
 
-        return view('adverts.index', compact('category', 'region', 'categories', 'regions', 'adverts'));
+        $query = $region ? $region->children() : Region::roots();
+        $regions = $query->orderBy('name')->getModels();
+
+        $query = $category ? $category->children() : Category::whereIsRoot();
+        $categories = $query->defaultOrder()->getModels();
+
+        $regions = array_filter($regions, function (Region $region) use ($regionsCounts) {
+            return isset($regionsCounts[$region->id]) && $regionsCounts[$region->id] > 0;
+        });
+
+        $categories = array_filter($categories, function (Category $category) use ($categoriesCounts) {
+            return isset($categoriesCounts[$category->id]) && $categoriesCounts[$category->id] > 0;
+        });
+
+        return view('adverts.index', compact(
+            'category', 'region',
+            'categories', 'regions',
+            'regionsCounts', 'categoriesCounts',
+            'adverts'
+        ));
     }
 
     public function show(Advert $advert)
