@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Banner\CostCalculator;
 use App\Services\Sms\SmsRu;
 use App\Services\Sms\SmsSender;
 use Illuminate\Contracts\Foundation\Application;
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 //            }
 //            return new SmsRu($config['app_id']);
 //        });
+        $this->app->singleton(CostCalculator::class, function (Application $app) {
+            $config = $app->make('config')->get('banner');
+            return new CostCalculator($config['price']);
+        });
     }
 
     /**
