@@ -7,7 +7,7 @@ use App\Entity\Adverts\Attribute;
 use App\Entity\Region;
 use App\Http\Router\AdvertsPath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
-use App\Entity\User;
+use App\Entity\User\User;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push('Home', route('home'));
