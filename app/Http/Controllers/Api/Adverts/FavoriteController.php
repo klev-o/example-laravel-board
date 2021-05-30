@@ -18,11 +18,11 @@ class FavoriteController extends Controller
     }
 
     /**
-     * @SWG\Post(
+     * @OA\Post(
      *     path="/adverts/{advertId}/favorite",
      *     tags={"Adverts"},
-     *     @SWG\Parameter(name="advertId", in="path", required=true, type="integer"),
-     *     @SWG\Response(
+     *     @OA\Parameter(name="advertId", in="path", required=true, type="integer"),
+     *     @OA\Response(
      *         response=201,
      *         description="Success response",
      *     ),
@@ -36,11 +36,11 @@ class FavoriteController extends Controller
     }
 
     /**
-     * @SWG\Delete(
+     * @OA\Delete(
      *     path="/adverts/{advertId}/favorite",
      *     tags={"Adverts"},
-     *     @SWG\Parameter(name="advertId", in="path", required=true, type="integer"),
-     *     @SWG\Response(
+     *     @OA\Parameter(name="advertId", in="path", required=true, type="integer"),
+     *     @OA\Response(
      *         response=204,
      *         description="Success response",
      *     ),

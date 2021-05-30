@@ -17,11 +17,11 @@ class RegisterController extends Controller
     }
 
     /**
-     * @SWG\Post(
+     * @OA\Post(
      *     path="/register",
      *     tags={"Profile"},
-     *     @SWG\Parameter(name="body", in="body", required=true, @SWG\Schema(ref="#/definitions/RegisterRequest")),
-     *     @SWG\Response(
+     *     @OA\Parameter(name="body", in="body", required=true, @OA\Schema(ref="#/definitions/RegisterRequest")),
+     *     @OA\Response(
      *         response=201,
      *         description="Success response",
      *     )

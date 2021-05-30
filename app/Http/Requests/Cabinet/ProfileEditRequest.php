@@ -22,11 +22,11 @@ class ProfileEditRequest extends FormRequest
 }
 
 /**
- * @SWG\Definition(
- *     definition="ProfileEditRequest",
+ * @OA\Schema(
+ *     schema="ProfileEditRequest",
  *     type="object",
- *     @SWG\Property(property="name", type="string"),
- *     @SWG\Property(property="last_name", type="string"),
- *     @SWG\Property(property="phone", type="string"),
+ *     @OA\Property(property="name", type="string"),
+ *     @OA\Property(property="last_name", type="string"),
+ *     @OA\Property(property="phone", type="string"),
  * )
  */

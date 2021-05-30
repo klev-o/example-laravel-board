@@ -25,13 +25,13 @@ class ProfileController extends Controller
     }
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/user",
      *     tags={"Profile"},
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Success response",
-     *         @SWG\Schema(ref="#/definitions/Profile"),
+     *         @OA\Schema(ref="#/definitions/Profile"),
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
      * )
@@ -47,11 +47,11 @@ class ProfileController extends Controller
     }
 
     /**
-     * @SWG\Put(
+     * @OA\Put(
      *     path="/user",
      *     tags={"Profile"},
-     *     @SWG\Parameter(name="body", in="body", required=true, @SWG\Schema(ref="#/definitions/ProfileEditRequest")),
-     *     @SWG\Response(
+     *     @OA\Parameter(name="body", in="body", required=true, @OA\Schema(ref="#/definitions/ProfileEditRequest")),
+     *     @OA\Response(
      *         response=200,
      *         description="Success response",
      *     ),

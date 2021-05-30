@@ -19,15 +19,15 @@ class FavoriteController extends Controller
     }
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/user/favorites",
      *     tags={"Favorites"},
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Success response",
-     *         @SWG\Schema(
+     *         @OA\Schema(
      *             type="array",
-     *             @SWG\Items(ref="#/definitions/AdvertList")
+     *             @OA\Items(ref="#/definitions/AdvertList")
      *         ),
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
@@ -41,11 +41,11 @@ class FavoriteController extends Controller
     }
 
     /**
-     * @SWG\Delete(
+     * @OA\Delete(
      *     path="/user/favorites/{advertId}",
      *     tags={"Favorites"},
-     *     @SWG\Parameter(name="advertId", in="path", required=true, type="integer"),
-     *     @SWG\Response(
+     *     @OA\Parameter(name="advertId", in="path", required=true, type="integer"),
+     *     @OA\Response(
      *         response=204,
      *         description="Success response",
      *     ),

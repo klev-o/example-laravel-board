@@ -27,15 +27,15 @@ class AdvertController extends Controller
     }
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/adverts",
      *     tags={"Adverts"},
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Success response",
-     *         @SWG\Schema(
+     *         @OA\Schema(
      *             type="array",
-     *             @SWG\Items(ref="#/definitions/AdvertList")
+     *             @OA\Items(ref="#/definitions/AdvertList")
      *         ),
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
@@ -52,20 +52,20 @@ class AdvertController extends Controller
     }
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/adverts/{advertId}",
      *     tags={"Adverts"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="advertId",
      *         description="ID of advert",
      *         in="path",
      *         required=true,
      *         type="integer"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Success response",
-     *         @SWG\Schema(ref="#/definitions/AdvertDetail"),
+     *         @OA\Schema(ref="#/definitions/AdvertDetail"),
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
      * )

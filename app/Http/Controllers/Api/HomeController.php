@@ -3,38 +3,38 @@
 namespace App\Http\Controllers\Api;
 
 /**
- * @SWG\Swagger(
+ * @OA\Swagger(
  *     basePath="/api",
  *     host="localhost:8080",
  *     schemes={"https"},
  *     produces={"application/json"},
  *     consumes={"application/json"},
- *     @SWG\Info(
+ *     @OA\Info(
  *         version="1.0.0",
  *         title="Board API",
  *         description="HTTP JSON API",
  *     ),
- *     @SWG\SecurityScheme(
- *         securityDefinition="OAuth2",
+ *     @OA\SecurityScheme(
+ *         securityScheme="OAuth2",
  *         type="oauth2",
  *         flow="password",
  *         tokenUrl="https://localhost:8080/oauth/token"
  *     ),
- *     @SWG\SecurityScheme(
- *         securityDefinition="Bearer",
+ *     @OA\SecurityScheme(
+ *         securityScheme="Bearer",
  *         type="apiKey",
  *         name="Authorization",
  *         in="header"
  *     ),
- *     @SWG\Definition(
- *         definition="ErrorModel",
+ *     @OA\Schema(
+ *         schema="ErrorModel",
  *         type="object",
  *         required={"code", "message"},
- *         @SWG\Property(
+ *         @OA\Property(
  *             property="code",
  *             type="integer",
  *         ),
- *         @SWG\Property(
+ *         @OA\Property(
  *             property="message",
  *             type="string"
  *         )
@@ -44,15 +44,15 @@ namespace App\Http\Controllers\Api;
 class HomeController
 {
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/",
      *     tags={"Info"},
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="200",
      *         description="API version",
-     *         @SWG\Schema(
+     *         @OA\Schema(
      *             type="object",
-     *             @SWG\Property(property="version", type="string")
+     *             @OA\Property(property="version", type="string")
      *         ),
      *     )
      * )

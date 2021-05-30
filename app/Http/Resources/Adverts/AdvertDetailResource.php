@@ -72,38 +72,38 @@ class AdvertDetailResource extends JsonResource
 }
 
 /**
- * @SWG\Definition(
- *     definition="AdvertDetail",
+ * @OA\Schema(
+ *     schema="AdvertDetail",
  *     type="object",
- *     @SWG\Property(property="id", type="integer"),
- *     @SWG\Property(property="user", type="object",
- *         @SWG\Property(property="name", type="string"),
- *         @SWG\Property(property="phone", type="string"),
+ *     @OA\Property(property="id", type="integer"),
+ *     @OA\Property(property="user", type="object",
+ *         @OA\Property(property="name", type="string"),
+ *         @OA\Property(property="phone", type="string"),
  *     ),
- *     @SWG\Property(property="category", type="object",
- *         @SWG\Property(property="id", type="integer"),
- *         @SWG\Property(property="name", type="string"),
+ *     @OA\Property(property="category", type="object",
+ *         @OA\Property(property="id", type="integer"),
+ *         @OA\Property(property="name", type="string"),
  *     ),
- *     @SWG\Property(property="region", type="object",
- *         @SWG\Property(property="id", type="integer"),
- *         @SWG\Property(property="name", type="string"),
+ *     @OA\Property(property="region", type="object",
+ *         @OA\Property(property="id", type="integer"),
+ *         @OA\Property(property="name", type="string"),
  *     ),
- *     @SWG\Property(property="title", type="string"),
- *     @SWG\Property(property="content", type="string"),
- *     @SWG\Property(property="price", type="integer"),
- *     @SWG\Property(property="address", type="string"),
- *     @SWG\Property(property="date", type="object",
- *         @SWG\Property(property="published", type="date"),
- *         @SWG\Property(property="expires", type="date"),
+ *     @OA\Property(property="title", type="string"),
+ *     @OA\Property(property="content", type="string"),
+ *     @OA\Property(property="price", type="integer"),
+ *     @OA\Property(property="address", type="string"),
+ *     @OA\Property(property="date", type="object",
+ *         @OA\Property(property="published", type="date"),
+ *         @OA\Property(property="expires", type="date"),
  *     ),
- *     @SWG\Property(property="values", type="array", @SWG\Items(ref="#/definitions/AdvertValue")),
- *     @SWG\Property(property="photos", type="array", @SWG\Items(type="string")),
+ *     @OA\Property(property="values", type="array", @OA\Items(ref="#/definitions/AdvertValue")),
+ *     @OA\Property(property="photos", type="array", @OA\Items(type="string")),
  * )
  *
- * @SWG\Definition(
- *     definition="AdvertValue",
+ * @OA\Schema(
+ *     schema="AdvertValue",
  *     type="object",
- *     @SWG\Property(property="name", type="string"),
- *     @SWG\Property(property="value", type="string"),
+ *     @OA\Property(property="name", type="string"),
+ *     @OA\Property(property="value", type="string"),
  * )
  */

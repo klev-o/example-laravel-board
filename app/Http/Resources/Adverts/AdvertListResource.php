@@ -52,25 +52,25 @@ class AdvertListResource extends JsonResource
 }
 
 /**
- * @SWG\Definition(
- *     definition="AdvertList",
+ * @OA\Schema(
+ *     schema="AdvertList",
  *     type="object",
- *     @SWG\Property(property="id", type="integer"),
- *     @SWG\Property(property="user", type="object",
- *         @SWG\Property(property="name", type="string"),
- *         @SWG\Property(property="phone", type="string"),
+ *     @OA\Property(property="id", type="integer"),
+ *     @OA\Property(property="user", type="object",
+ *         @OA\Property(property="name", type="string"),
+ *         @OA\Property(property="phone", type="string"),
  *     ),
- *     @SWG\Property(property="category", type="object",
- *         @SWG\Property(property="id", type="integer"),
- *         @SWG\Property(property="name", type="string"),
+ *     @OA\Property(property="category", type="object",
+ *         @OA\Property(property="id", type="integer"),
+ *         @OA\Property(property="name", type="string"),
  *     ),
- *     @SWG\Property(property="region", type="object",
- *         @SWG\Property(property="id", type="integer"),
- *         @SWG\Property(property="name", type="string"),
+ *     @OA\Property(property="region", type="object",
+ *         @OA\Property(property="id", type="integer"),
+ *         @OA\Property(property="name", type="string"),
  *     ),
- *     @SWG\Property(property="title", type="string"),
- *     @SWG\Property(property="price", type="integer"),
- *     @SWG\Property(property="date", type="date"),
- *     @SWG\Property(property="photo", type="string"),
+ *     @OA\Property(property="title", type="string"),
+ *     @OA\Property(property="price", type="integer"),
+ *     @OA\Property(property="date", type="date"),
+ *     @OA\Property(property="photo", type="string"),
  * )
  */
